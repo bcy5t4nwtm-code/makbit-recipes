@@ -1,0 +1,5 @@
+# כל הקבצים יושבים בעמוד הראשי של המאגר. הפקודה מסדרת אותם לתיקיות בזמן הבנייה.
+[build]
+  command = "mkdir -p dist netlify/functions && cp index.html dist/ && cp recipes.mjs netlify/functions/"
+  publish = "dist"
+  functions = "netlify/functions"
