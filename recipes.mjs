@@ -1,5 +1,4 @@
 import { getStore } from "@netlify/blobs";
-import seed from "./seed.mjs";
 
 const json = (data, status = 200) =>
   new Response(JSON.stringify(data), {
@@ -31,7 +30,8 @@ export default async (req) => {
   const store = getStore("recipes");
 
   if (req.method === "GET") {
-    const data = (await store.get("all", { type: "json" })) || seed;
+    // אם עוד לא נשמר כלום – האתר משתמש במתכונים שבתוך index.html
+    const data = (await store.get("all", { type: "json" })) || { recipes: null };
     return json(data);
   }
 
